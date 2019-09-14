@@ -192,7 +192,7 @@
     return 2;
   };
 
-  var getWizardHeight = function (wizardWidth) {
+  var getWizardHeight = function () {
     return 1.377 * wizardWidth;
   };
 
@@ -203,7 +203,7 @@
 
   var getWizardY = function (height) {
     var percent = height * 0.66;
-    var totalHeight = percent - getWizardHeight(wizardWidth);
+    var totalHeight = percent - getWizardHeight();
     return totalHeight;
   };
 </script>
