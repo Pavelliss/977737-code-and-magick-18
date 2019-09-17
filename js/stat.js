@@ -1,4 +1,5 @@
-// eslint-disable-next-line strict
+'use strict';
+
 var CLOUD_WIDTH = 420;
 var CLOUD_HEIGTH = 270;
 var CLOUD_X = 100;
@@ -36,14 +37,14 @@ var getMaxElement = function (arr) {
 };
 
 var getRandomColor = function (ctx, hue, lightness) {
-  var saturationColor = Math.floor(Math.random() * 100);
-  var color = ctx.fillStyle = 'hsl(' + hue + ',' + saturationColor + '%,' + lightness + '%)';
-  return color;
+  var saturationColor = Math.floor(Math.random() * 101);
+  ctx.fillStyle = 'hsl(' + hue + ',' + saturationColor + '%,' + lightness + '%)';
+  return ctx.fillStyle;
 };
 
 window.renderStatistics = function (ctx, names, times) {
   // cloud
-  renderCloud(ctx, CLOUD_X + GAP, CLOUD_Y + GAP, 'rgba(0, 0, 0, 0.3)');
+  renderCloud(ctx, CLOUD_X + GAP, CLOUD_Y + GAP, 'rgba(0, 0, 0, 0.7)');
   renderCloud(ctx, CLOUD_X, CLOUD_Y, '#ffffff');
 
   // text message
