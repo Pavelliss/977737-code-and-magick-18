@@ -1,4 +1,4 @@
-// CLOUD
+// eslint-disable-next-line strict
 var CLOUD_WIDTH = 420;
 var CLOUD_HEIGTH = 270;
 var CLOUD_X = 100;
@@ -9,8 +9,8 @@ var HISTOGRAM_WIDTH = 40;
 var HISTOGRAM_HEIGHT = 150;
 
 var histMarginLeft = CLOUD_X + 30;
-var histGap = 90; // растояние между столбцами
-var histValue = 90; // растояние от пололка
+var histGap = 90;
+var histValue = 90;
 
 var renderCloud = function (ctx, x, y, color) {
   ctx.fillStyle = color;
@@ -32,8 +32,13 @@ var getMaxElement = function (arr) {
       maxElement = arr[i];
     }
   }
-
   return maxElement;
+};
+
+var getRandomColor = function (ctx, hue, lightness) {
+  var saturationColor = Math.floor(Math.random() * 100);
+  var color = ctx.fillStyle = 'hsl(' + hue + ',' + saturationColor + '%,' + lightness + '%)';
+  return color;
 };
 
 window.renderStatistics = function (ctx, names, times) {
@@ -52,13 +57,15 @@ window.renderStatistics = function (ctx, names, times) {
     if (names[i] === 'Вы') {
       ctx.fillStyle = 'red';
     } else {
-      var saturationColor = Math.floor(Math.random() * 100);
-      ctx.fillStyle = 'hsl(240,' + saturationColor + '%, 50%)';
+      getRandomColor(ctx, 240, 50);
     }
     var percentHeight = HISTOGRAM_HEIGHT - HISTOGRAM_HEIGHT * (times[i] / maxTime);
 
     ctx.fillRect(histMarginLeft + (histGap * i), histValue + percentHeight, HISTOGRAM_WIDTH, HISTOGRAM_HEIGHT - percentHeight);
+
     addText(ctx, names[i], histMarginLeft + (histGap * [i]), CLOUD_HEIGTH - 20);
     addText(ctx, Math.floor(times[i]), histMarginLeft + (histGap * [i]), histValue - 20);
   }
 };
+
+
