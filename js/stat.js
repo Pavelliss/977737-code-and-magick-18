@@ -66,7 +66,7 @@
       ctx.fillRect(histMarginLeft + (histGap * i), histValue + percentHeight, HISTOGRAM_WIDTH, HISTOGRAM_HEIGHT - percentHeight);
 
       addText(ctx, names[i], histMarginLeft + (histGap * [i]), 250);
-      addText(ctx, Math.floor(times[i]), histMarginLeft + (histGap * [i]), histValue - 20);
+      addText(ctx, Math.floor(times[i]), histMarginLeft + (histGap * [i]), histValue - 20 + percentHeight);
     }
   };
 })();
