@@ -13,6 +13,7 @@ var histMarginLeft = CLOUD_X + 30;
 var histGap = 90;
 var histValue = 90;
 
+
 var renderCloud = function (ctx, x, y, color) {
   ctx.fillStyle = color;
   ctx.fillRect(x, y, CLOUD_WIDTH, CLOUD_HEIGTH);
@@ -65,7 +66,7 @@ window.renderStatistics = function (ctx, names, times) {
     ctx.fillRect(histMarginLeft + (histGap * i), histValue + percentHeight, HISTOGRAM_WIDTH, HISTOGRAM_HEIGHT - percentHeight);
 
     addText(ctx, names[i], histMarginLeft + (histGap * [i]), CLOUD_HEIGTH - 20);
-    addText(ctx, Math.floor(times[i]), histMarginLeft + (histGap * [i]), histValue - 20);
+    addText(ctx, Math.floor(times[i]), histMarginLeft + (histGap * [i]), histValue - 20 + percentHeight);
   }
 };
 
