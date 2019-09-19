@@ -2,7 +2,7 @@
 
 (function () {
   var CLOUD_WIDTH = 420;
-  var CLOUD_HEIGTH = 270;
+  var CLOUD_HEIGHT = 270;
   var CLOUD_X = 100;
   var CLOUD_Y = 10;
   var GAP = 10;
@@ -49,14 +49,14 @@
         CLOUD_X + GAP,
         CLOUD_Y + GAP,
         CLOUD_WIDTH,
-        CLOUD_HEIGTH,
+        CLOUD_HEIGHT,
         'rgba(0, 0, 0, 0.7)');
 
     renderCloud(ctx,
         CLOUD_X,
         CLOUD_Y,
         CLOUD_WIDTH,
-        CLOUD_HEIGTH,
+        CLOUD_HEIGHT,
         '#ffffff');
 
     // text message
@@ -83,7 +83,7 @@
       addText(ctx,
           names[i],
           histMarginLeft + (HIST_GAP * [i]),
-          CLOUD_HEIGTH - 20);
+          CLOUD_HEIGHT - 20);
 
       addText(ctx,
           Math.floor(times[i]),
