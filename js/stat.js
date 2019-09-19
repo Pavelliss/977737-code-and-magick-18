@@ -11,12 +11,12 @@
   var HISTOGRAM_HEIGHT = 150;
 
   var histMarginLeft = CLOUD_X + 30;
-  var histGap = 90;
-  var histValue = 90;
+  var HIST_GAP = 90;
+  var HIST_VALUE = 90;
 
-  var renderCloud = function (ctx, x, y, color) {
+  var renderCloud = function (ctx, x, y, width, height, color) {
     ctx.fillStyle = color;
-    ctx.fillRect(x, y, CLOUD_WIDTH, CLOUD_HEIGTH);
+    ctx.fillRect(x, y, width, height);
   };
 
   var addText = function (ctx, text, x, y) {
@@ -45,8 +45,19 @@
 
   window.renderStatistics = function (ctx, names, times) {
   // cloud
-    renderCloud(ctx, CLOUD_X + GAP, CLOUD_Y + GAP, 'rgba(0, 0, 0, 0.7)');
-    renderCloud(ctx, CLOUD_X, CLOUD_Y, '#ffffff');
+    renderCloud(ctx,
+        CLOUD_X + GAP,
+        CLOUD_Y + GAP,
+        CLOUD_WIDTH,
+        CLOUD_HEIGTH,
+        'rgba(0, 0, 0, 0.7)');
+
+    renderCloud(ctx,
+        CLOUD_X,
+        CLOUD_Y,
+        CLOUD_WIDTH,
+        CLOUD_HEIGTH,
+        '#ffffff');
 
     // text message
     addText(ctx, 'Ура вы победили!', 120, 30);
@@ -63,10 +74,21 @@
       }
       var percentHeight = HISTOGRAM_HEIGHT - HISTOGRAM_HEIGHT * (times[i] / maxTime);
 
-      ctx.fillRect(histMarginLeft + (histGap * i), histValue + percentHeight, HISTOGRAM_WIDTH, HISTOGRAM_HEIGHT - percentHeight);
+      renderCloud(ctx,
+          histMarginLeft + (HIST_GAP * i),
+          HIST_VALUE + percentHeight,
+          HISTOGRAM_WIDTH,
+          HISTOGRAM_HEIGHT - percentHeight);
 
-      addText(ctx, names[i], histMarginLeft + (histGap * [i]), 250);
-      addText(ctx, Math.floor(times[i]), histMarginLeft + (histGap * [i]), histValue - 20 + percentHeight);
+      addText(ctx,
+          names[i],
+          histMarginLeft + (HIST_GAP * [i]),
+          CLOUD_HEIGTH - 20);
+
+      addText(ctx,
+          Math.floor(times[i]),
+          histMarginLeft + (HIST_GAP * [i]),
+          HIST_VALUE - 20 + percentHeight);
     }
   };
 })();
