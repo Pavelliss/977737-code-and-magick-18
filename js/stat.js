@@ -14,7 +14,7 @@
   var HIST_GAP = 90;
   var HIST_VALUE = 90;
 
-  var renderCloud = function (ctx, x, y, width, height, color) {
+  var renderFill = function (ctx, x, y, width, height, color) {
     ctx.fillStyle = color;
     ctx.fillRect(x, y, width, height);
   };
@@ -40,19 +40,20 @@
   var getRandomColor = function (ctx, hue, lightness) {
     var saturationColor = Math.floor(Math.random() * 101);
     ctx.fillStyle = 'hsl(' + hue + ',' + saturationColor + '%,' + lightness + '%)';
-    return ctx.fillStyle;
   };
 
   window.renderStatistics = function (ctx, names, times) {
   // cloud
-    renderCloud(ctx,
+    renderFill(
+        ctx,
         CLOUD_X + GAP,
         CLOUD_Y + GAP,
         CLOUD_WIDTH,
         CLOUD_HEIGHT,
         'rgba(0, 0, 0, 0.7)');
 
-    renderCloud(ctx,
+    renderFill(
+        ctx,
         CLOUD_X,
         CLOUD_Y,
         CLOUD_WIDTH,
@@ -74,20 +75,23 @@
       }
       var percentHeight = HISTOGRAM_HEIGHT - HISTOGRAM_HEIGHT * (times[i] / maxTime);
 
-      renderCloud(ctx,
+      renderFill(
+          ctx,
           histMarginLeft + (HIST_GAP * i),
           HIST_VALUE + percentHeight,
           HISTOGRAM_WIDTH,
           HISTOGRAM_HEIGHT - percentHeight);
 
-      addText(ctx,
+      addText(
+          ctx,
           names[i],
-          histMarginLeft + (HIST_GAP * [i]),
+          histMarginLeft + (HIST_GAP * i),
           CLOUD_HEIGHT - 20);
 
-      addText(ctx,
+      addText(
+          ctx,
           Math.floor(times[i]),
-          histMarginLeft + (HIST_GAP * [i]),
+          histMarginLeft + (HIST_GAP * i),
           HIST_VALUE - 20 + percentHeight);
     }
   };
