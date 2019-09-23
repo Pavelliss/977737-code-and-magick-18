@@ -37,9 +37,11 @@
     return maxElement;
   };
 
-  var getRandomColor = function (ctx, hue, lightness) {
+  var getRandomColor = function (hue, lightness) {
+    var randomColor = '';
     var saturationColor = Math.floor(Math.random() * 101);
-    ctx.fillStyle = 'hsl(' + hue + ',' + saturationColor + '%,' + lightness + '%)';
+    randomColor = 'hsl(' + hue + ',' + saturationColor + '%,' + lightness + '%)';
+    return randomColor;
   };
 
   window.renderStatistics = function (ctx, names, times) {
@@ -71,7 +73,7 @@
       if (names[i] === 'Вы') {
         ctx.fillStyle = 'red';
       } else {
-        getRandomColor(ctx, 240, 50);
+        ctx.fillStyle = getRandomColor(240, 50);
       }
       var percentHeight = HISTOGRAM_HEIGHT - HISTOGRAM_HEIGHT * (times[i] / maxTime);
 
