@@ -1,4 +1,4 @@
-'use strict'
+'use strict';
 
 var setupBlock = document.querySelector('.setup');
 var setupSimilarBlock = document.querySelector('.setup-similar');
@@ -16,7 +16,7 @@ var USER_NAMES = [
   'Юлия',
   'Люпита',
   'Вашингтон'
-  ];
+];
 
 var USER_LASTNAME = [
   'да Марья',
@@ -86,7 +86,7 @@ setupBlock.classList.remove('hidden');
 setupSimilarBlock.classList.remove('hidden');
 
 var renderWizard = function (wizard) {
-  var wizardElement =  similarWizardTemplate.cloneNode(true);
+  var wizardElement = similarWizardTemplate.cloneNode(true);
 
   wizardElement.querySelector('.setup-similar-label')
   .textContent = wizard.name + ' ' + wizard.lastName;
@@ -100,6 +100,6 @@ var renderWizard = function (wizard) {
 var fragment = document.createDocumentFragment();
 for (var i = 0; i < wizards.length; i++) {
   fragment.appendChild(renderWizard(wizards[i]));
-};
+}
 
 similarListElement.appendChild(fragment);
