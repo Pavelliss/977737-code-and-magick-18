@@ -39,7 +39,6 @@
     'rgb(0, 0, 0)'
   ];
 
-
   var EYES_COLORS = [
     'black',
     'red',
@@ -49,11 +48,8 @@
   ];
 
   var getRandomElement = function (array) {
-    var number = Infinity;
-    while (number > array.length - 1) {
-      number = Math.floor(Math.random() * 10);
-    }
-    return array[number];
+    var indexElement = Math.round(-0.5 + Math.random() * array.length);
+    return array[indexElement];
   };
 
   var renderWizard = function (wizard) {
@@ -70,9 +66,9 @@
 
   var fragment = document.createDocumentFragment();
 
-  var createWizards = function (quantity) {
+  var createWizards = function (count) {
     var wizards = [];
-    for (var i = 0; i < quantity; i++) {
+    for (var i = 0; i < count; i++) {
       var wizard = {
         name: getRandomElement(USER_NAMES),
         lastName: getRandomElement(USER_LASTNAMES),
