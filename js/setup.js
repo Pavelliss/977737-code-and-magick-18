@@ -56,7 +56,7 @@
     var wizardElement = similarWizardTemplate.cloneNode(true);
 
     wizardElement.querySelector('.setup-similar-label')
-  .textContent = wizard.name + ' ' + wizard.lastName;
+      .textContent = wizard.name + ' ' + wizard.lastName;
 
     wizardElement.querySelector('.wizard-coat').style.fill = wizard.coatColor;
     wizardElement.querySelector('.wizard-eyes').style.fill = wizard.eyesColor;
@@ -76,7 +76,15 @@
         eyesColor: getRandomElement(EYES_COLORS)
       };
       wizards.push(wizard);
-      fragment.appendChild(renderWizard(wizards[i]));
+      // fragment.appendChild(renderWizard(wizards[i]));
+    }
+    // return similarListElement.appendChild(fragment);
+    return wizards;
+  };
+
+  var addWizards = function (array) {
+    for (var i = 0; i < array.length; i++) {
+      fragment.appendChild(renderWizard(array[i]));
     }
     return similarListElement.appendChild(fragment);
   };
@@ -84,5 +92,5 @@
   setupBlock.classList.remove('hidden');
   setupSimilarBlock.classList.remove('hidden');
 
-  createWizards(4);
+  addWizards(createWizards(4));
 }());
