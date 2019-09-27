@@ -76,21 +76,19 @@
         eyesColor: getRandomElement(EYES_COLORS)
       };
       wizards.push(wizard);
-      // fragment.appendChild(renderWizard(wizards[i]));
     }
-    // return similarListElement.appendChild(fragment);
     return wizards;
   };
 
-  var addWizards = function (array) {
+  var addWizardsMarkup = function (array) {
     for (var i = 0; i < array.length; i++) {
       fragment.appendChild(renderWizard(array[i]));
     }
-    return similarListElement.appendChild(fragment);
+    similarListElement.appendChild(fragment);
   };
 
   setupBlock.classList.remove('hidden');
   setupSimilarBlock.classList.remove('hidden');
 
-  addWizards(createWizards(4));
+  addWizardsMarkup(createWizards(4));
 }());
